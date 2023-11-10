@@ -7,8 +7,7 @@ const nextConfig = {
     },
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
-    },
-    distDir: "dist/"
+    }
 }
 
 module.exports = nextConfig
