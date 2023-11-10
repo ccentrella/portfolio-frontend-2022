@@ -1,0 +1,82 @@
+/* SCSS Document */
+
+.resume-emphasis {
+    @include primary-color-foreground;
+    font-weight: 500;
+}
+
+.resume ul {
+    padding-left: 1.25em;
+    margin-bottom: 1.25em;
+}
+
+.resume p {
+    margin-bottom: 0.75em;
+    margin-top: 0.75em;
+}
+
+.resume .section-title {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.resume .resume-list {
+    p, ul, li {
+        margin-bottom: 0.25em;
+        margin-top: 0;
+    }
+}
+
+.resume .resume-item-heading {
+    @include primary-color-foreground;
+    font-weight: bold;
+    font-size: 1.05em;
+    text-transform: uppercase;
+    margin-top: 1.5em;
+    margin-bottom: 0.35em;
+}
+
+.resume .resume-item-subheading {
+    @include primary-color-foreground;
+    font-weight: 300;
+    font-size: 0.9em;
+    margin-top: 0;
+    margin-bottom: 0.9em;
+    line-height: 1.75;
+}
+
+.resume .resume-name {
+    text-align: left;
+    margin: 1.5em 0 0;
+    font-weight: bold;
+    font-size: 1.15em;
+    @include primary-color-foreground;
+}
+
+.resume .resume-location {
+    text-align: left;
+    margin: 0.25em 0 0.5em;
+    font-weight: bold;
+    font-size: 1.15em;
+    @include primary-color-foreground;
+}
+
+.resume-buttons  {
+    margin-left: -0.75em;
+    margin-bottom: 1.25em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.resume-link {
+    font-weight: 600;
+    padding: 0.5em 0.75em;
+    @include primary-color-foreground;
+
+    &:hover {
+        color: #8bdefc;
+        @include secondary-color-background;
+        border-radius: 10px;
+        opacity: 0.9;
+    }
+}
