@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import Subscribe from '@/components/Subscribe';
 import BlogEntry from '@/components/blog/BlogEntry';
 import {getPosts} from "@/services/blog";
 import StatusMessagePane from "@/layout/StatusMessagePane";

@@ -1,15 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const Page = () => {
-  
-    useEffect(() => {
-        document.title = "Generate Bold and Italic Characters | Chris Centrella";
-        return () => {
-            document.title = '';
-        }
-    }, []);
 
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');

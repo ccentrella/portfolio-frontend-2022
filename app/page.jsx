@@ -5,7 +5,6 @@ import Interests from "./interests/page";
 import WorkExperienceLinkBlock from "@/components/blocks/link-blocks/WorkExperienceLinkBlock";
 
 const Page = () => {
-
     return (
         <article className="home">
             <section>

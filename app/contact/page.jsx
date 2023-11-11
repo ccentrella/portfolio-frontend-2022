@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { submitContactForm } from "@/services/contact";
 import StatusMessagePane from "@/layout/StatusMessagePane";
 
@@ -10,13 +10,6 @@ const Page = () => {
     const [message, setMessage] = useState('');
     const [statusMessage, setStatusMessage] = useState('');
     const [statusType, setStatusType] = useState('warning');
-
-    useEffect(() => {
-        document.title = 'Get In Touch | Chris Centrella';
-        return () => {
-            document.title = '';
-        }
-    }, []);
 
     const resetForm = () => {
         setName('');
