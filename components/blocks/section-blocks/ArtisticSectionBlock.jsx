@@ -1,11 +1,11 @@
 import React from "react";
-import ImageBlock from "../ImageBlock";
+import ImageBlock from "@/components/blocks/ImageBlock";
 
 function ArtisticSectionBlock() {
     return (
         <div className="section-block transparent">
             <div className="section-block-image backdrop flex-col">
-                <ImageBlock src="/assets/specialties-ux.png" alt="fibonacci program" color="#B9C4D1" />
+                <ImageBlock src="/images/specialties-ux.png" alt="fibonacci program" color="#B9C4D1" />
             </div>
             <div className="section-block-content flex-col">
                 <h2 className="button-label">Artistic</h2>

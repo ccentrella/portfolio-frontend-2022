@@ -3,8 +3,8 @@
 import React from 'react';
 
 import { useState, useEffect } from 'react';
-import Subscribe from '../(components)/Subscribe';
-import BlogEntry from '../(components)/blog/BlogEntry';
+import Subscribe from '@/components/Subscribe';
+import BlogEntry from '@/components/blog/BlogEntry';
 
 function Page() {
     const [loaded, setLoaded] = useState(false);

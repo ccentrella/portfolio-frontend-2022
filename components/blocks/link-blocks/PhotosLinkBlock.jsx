@@ -1,6 +1,6 @@
 import React from "react";
 import LinkBlock from "./LinkBlock";
-import PhotoIcon from "../../../../../assets/images/icons/photo.svg";
+import PhotoIcon from "@/icons/photo.svg";
 
 function PhotosLinkBlock() {
 

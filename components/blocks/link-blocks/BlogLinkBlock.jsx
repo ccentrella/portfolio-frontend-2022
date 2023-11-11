@@ -1,6 +1,8 @@
+'use client'
+
 import React, {useEffect, useState} from "react";
 import LinkBlock from "./LinkBlock";
-import BlogIcon from "../../../../../assets/images/icons/article.svg";
+import BlogIcon from "@/icons/article.svg";
 
 function BlogLinkBlock() {
     const [latestPost, setLatestPost] = useState({value: 0, title: "", link: ""});

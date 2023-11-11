@@ -16,31 +16,31 @@ i {
 }
 
 i.calendar::before {
-    content: url(<%= asset_path 'icons/calendar.svg' %>);
+    content: url('/icons/calendar.svg');
 }
 
 i.person::before {
-    content: url(<%= asset_path 'icons/person.svg' %>);
+    content: url('/icons/person.svg');
 }
 
 i.clock::before {
-    content: url(<%= asset_path 'icons/clock.svg' %>);
+    content: url('/icons/clock.svg');
 }
 
 i.left-arrow::before {
-    content: url(<%= asset_path 'icons/left-arrow.svg' %>);
+    content: url('/icons/left-arrow.svg');
 }
 
 i.right-arrow::before {
-    content: url(<%= asset_path 'icons/right-arrow.svg' %>);
+    content: url('/icons/right-arrow.svg');
 }
 
 i.pencil::before {
-    content: url(<%= asset_path 'icons/pencil.svg' %>);
+    content: url('/icons/pencil.svg');
 }
 
 i.heart::before {
-    content: url(<%= asset_path 'icons/heart.svg' %>);
+    content: url('/icons/heart.svg');
 }
 
 .circle-icon {
@@ -56,6 +56,7 @@ i.heart::before {
 
     img {
         height: 4em;
+        width: auto;
         margin: 2em;
     }
 
@@ -72,7 +73,7 @@ i.heart::before {
 
         img {
             height: 8em;
-            margin: 0em;
+            margin: 0;
         }
     }
 

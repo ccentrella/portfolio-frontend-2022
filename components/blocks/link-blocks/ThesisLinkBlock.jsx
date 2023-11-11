@@ -1,12 +1,12 @@
 import React from "react";
 import LinkBlock from "./LinkBlock";
-import ThesisIcon from "../../../../../assets/images/icons/article.svg";
+import ThesisIcon from "@/icons/article.svg";
 
 function ThesisLinkBlock() {
 
     const links = [{
         linkDescription: "Read Now",
-        linkPath: "/assets/thesis.pdf",
+        linkPath: "/images/thesis.pdf",
         isExternal: true
     }];
 

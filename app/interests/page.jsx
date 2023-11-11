@@ -2,10 +2,10 @@
 
 import React, { useEffect } from "react";
 
-import BlogBlock from "../(components)/blocks/link-blocks/BlogLinkBlock";
-import PhotosLinkBlock from "../(components)/blocks/link-blocks/PhotosLinkBlock";
-import GuitarBlogSectionBlocks from "../(components)/blocks/section-blocks/GuitarBlogSectionBlocks";
-import PhotographySectionBlock from "../(components)/blocks/section-blocks/PhotographySectionBlock";
+import BlogBlock from "@/components/blocks/link-blocks/BlogLinkBlock";
+import PhotosLinkBlock from "@/components/blocks/link-blocks/PhotosLinkBlock";
+import GuitarBlogSectionBlocks from "@/components/blocks/section-blocks/GuitarBlogSectionBlocks";
+import PhotographySectionBlock from "@/components/blocks/section-blocks/PhotographySectionBlock";
 
 function Page() {
 

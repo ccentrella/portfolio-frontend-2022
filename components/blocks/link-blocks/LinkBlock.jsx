@@ -1,16 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function LinkBlock({title, icon, links = [{}], expandIcon = false}) {
 
     const {linkPath, isExternal} = links[0];
     const iconElement = isExternal ? (
         <a target="_blank" href={linkPath}>
-            <img src={icon} alt={title + " icon"}/>
+            <Image src={icon} alt={title + " icon"}/>
         </a>
     ) : (
         <Link href={linkPath}>
-            <img src={icon} alt={title + " icon"}/>
+            <Image src={icon} alt={title + " icon"}/>
         </Link>
     );
     const titleElement = isExternal ? (

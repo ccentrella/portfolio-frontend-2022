@@ -5,7 +5,7 @@ function Hero() {
         <>
             <div id="hero">
                 <div id="hero-primary">
-                    <img id="hero-profile" src="/assets/favicon.png" alt="profile image" />
+                    <img id="hero-profile" src="/images/favicon.png" alt="profile image" />
                     <div id="hero-logo">
                         <h1 id="hero-headline">Christopher Centrella</h1>
                         <div id="hero-bottom">

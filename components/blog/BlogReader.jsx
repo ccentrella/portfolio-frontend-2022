@@ -1,4 +1,6 @@
-import LoadingScreen from '(components)/LoadingScreen';
+'use client'
+
+import LoadingScreen from '@/layout/LoadingScreen';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link'
 import { useParams } from 'next/navigation';

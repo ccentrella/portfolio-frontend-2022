@@ -1,11 +1,11 @@
 import React from "react";
-import ImageBlock from "../ImageBlock";
+import ImageBlock from "@/components/blocks/ImageBlock";
 
 function ComputerVisionSectionBlock() {
     return (
         <div className="section-block transparent">
             <div className="section-block-image backdrop flex-col">
-            <ImageBlock src="/assets/specialties-cv.png" alt="computer vision app drawing" color="#5190AC" />
+            <ImageBlock src="/images/specialties-cv.png" alt="computer vision app drawing" color="#5190AC" />
             </div>
             <div className="section-block-content backdrop flex-col">
                 <h2 className="button-label">Computer Vision</h2>

@@ -1,5 +1,5 @@
 import React from "react";
-import ImageBlock from "../ImageBlock";
+import ImageBlock from "@/components/blocks/ImageBlock";
 
 function ArtificialIntelligenceSectionBlock() {
     return (
@@ -16,7 +16,7 @@ function ArtificialIntelligenceSectionBlock() {
                 </p>
             </div>
             <div className="section-block-image flex-col light-blue">
-                <ImageBlock src="/assets/specialties-ai.png" alt="artificial intelligence image" color="#A5CBFA" />
+                <ImageBlock src="/images/specialties-ai.png" alt="artificial intelligence image" color="#A5CBFA" />
             </div>
         </div>
     );

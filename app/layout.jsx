@@ -1,17 +1,19 @@
-import './global.css';
+import './global.scss';
+// import '/styles/typography.scss'
 
 import React from 'react';
 
-import Header from './(layout)/Header';
-import Footer from './(layout)/Footer';
-import AppLoading from './(layout)/AppLoading';
+import Header from '@/layout/Header';
+import Footer from '@/layout/Footer';
+import AppLoading from '@/layout/AppLoading';
+import Script from "next/script";
 
 const metaConfiguration = {
     url: 'https://chriscentrella.com',
     title: 'Welcome to Chris\'s Portfolio',
     description: '10 years of coding experience, with extensive knowledge of ' +
     'frontend and backend. Exceptional debugging and problem solving using Root Cause Analysis (RCA).',
-    image: 'https://chriscentrella.com/assets/thumbnail.png'
+    image: 'https://chriscentrella.com/images/thumbnail.png'
 }
 export const metadata = {
     author: 'Chris Centrella',
@@ -37,8 +39,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
     const recaptchaScript = (
-        <script async src={'https://www.google.com/recaptcha/api.js?render=' +
-            RECAPTCHA_SITE_KEY_V3}></script>
+        <Script async src={'https://www.google.com/recaptcha/api.js?render=' +
+            process.env.RECAPTCHA_SITE_KEY_V3}></Script>
     )
 
     return (

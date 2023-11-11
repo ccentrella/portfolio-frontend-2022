@@ -1,6 +1,6 @@
 import React from "react";
 import LinkBlock from "./LinkBlock";
-import ResumeIcon from "../../../../../assets/images/icons/paper.svg";
+import ResumeIcon from "@/icons/paper.svg";
 
 function WorkExperienceLinkBlock() {
 

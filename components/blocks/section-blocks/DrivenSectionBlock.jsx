@@ -1,11 +1,11 @@
 import React from "react";
-import ImageBlock from "../ImageBlock";
+import ImageBlock from "@/components/blocks/ImageBlock";
 
 function DrivenSectionBlock() {
     return (
         <div className="section-block thin">
             <div className="section-block-image flex-col">
-                <ImageBlock src="/assets/highlights-driven.png" alt="driven image" color="#A5CBFA" />
+                <ImageBlock src="/images/highlights-driven.png" alt="driven image" color="#A5CBFA" />
             </div>
             <div className="section-block-content flex-col">
                 <h2 className="button-label">Driven</h2>

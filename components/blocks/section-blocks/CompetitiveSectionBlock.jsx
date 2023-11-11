@@ -1,11 +1,11 @@
 import React from "react";
-import ImageBlock from "../ImageBlock";
+import ImageBlock from "@/components/blocks/ImageBlock";
 
 function CompetitiveSectionBlock() {
     return (
         <div className="section-block thin">
             <div className="section-block-image flex-col">
-                <ImageBlock src="/assets/highlights-competitive.png" alt="fibonacci program" color="#B9C4D1" />
+                <ImageBlock src="/images/highlights-competitive.png" alt="fibonacci program" color="#B9C4D1" />
             </div>
             <div className="section-block-content flex-col">
                 <h2 className="button-label">Competitive</h2>

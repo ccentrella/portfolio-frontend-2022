@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from 'react';
 
 function BlogEditor() {
@@ -22,7 +24,7 @@ function BlogEditor() {
     useEffect(() => {
         const recaptchaScript = document.createElement('script');
         recaptchaScript.src =
-            'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY_V3;
+            'https://www.google.com/recaptcha/api.js?render=' + process.env.RECAPTCHA_SITE_KEY_V3;
         recaptchaScript.async = true;
         document.body.appendChild(recaptchaScript);
 
@@ -82,7 +84,7 @@ function BlogEditor() {
 
         grecaptcha.ready(function () {
             grecaptcha
-                .execute(RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
+                .execute(process.env.RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
                 .then(function (token) {
                     submit(token);
                 });

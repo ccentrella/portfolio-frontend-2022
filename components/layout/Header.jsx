@@ -1,7 +1,10 @@
+'use client'
+
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import MenuIcon from 'assets/images/icons/menu.svg';
+import MenuIcon from '@/icons/menu.svg';
+import Image from "next/image";
 
 function Header() {
     const location = usePathname();
@@ -36,7 +39,7 @@ function Header() {
         <>
             <header>
                 <img
-                    src="/assets/favicon.png"
+                    src="/images/favicon.png"
                     alt="profile image"
                     className="logo-image"
                 />
@@ -44,7 +47,7 @@ function Header() {
                     <Link href="/">Chris Centrella</Link>
                 </h1>
                 <label className="menu-toggle" htmlFor="toggle">
-                    <img src={MenuIcon} className="menu-toggle-image" alt="menu icon" />
+                    <Image src={MenuIcon} alt="menu icon" className="menu-toggle-image" />
                 </label>
                 <input type="checkbox" id="toggle" />
                 <nav className="navbar">

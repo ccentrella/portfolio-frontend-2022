@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 
 function Subscribe() {
@@ -60,7 +62,7 @@ function Subscribe() {
 
         grecaptcha.ready(function () {
             grecaptcha
-                .execute(RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
+                .execute(process.env.RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
                 .then(function (token) {
                     submit(token);
                 });

@@ -2,9 +2,9 @@
 
 import React, { useEffect } from "react";
 
-import ArtisticSectionBlock from "../(components)/blocks/section-blocks/ArtisticSectionBlock";
-import CompetitiveSectionBlock from "../(components)/blocks/section-blocks/CompetitiveSectionBlock";
-import DrivenSectionBlock from "../(components)/blocks/section-blocks/DrivenSectionBlock";
+import ArtisticSectionBlock from "@/components/blocks/section-blocks/ArtisticSectionBlock";
+import CompetitiveSectionBlock from "@/components/blocks/section-blocks/CompetitiveSectionBlock";
+import DrivenSectionBlock from "@/components/blocks/section-blocks/DrivenSectionBlock";
 
 function Page() {
 
