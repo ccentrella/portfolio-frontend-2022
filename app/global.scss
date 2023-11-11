@@ -5,31 +5,31 @@
 @import "trix";
 
 /* Base styles */
-@import "/styles/variables.scss";
-@import "/styles/icons.scss";
-@import "/styles/reset.scss";
-@import "/styles/layout.scss";
-@import "/styles/typography.scss";
+@import "/public/styles/variables.scss";
+@import "/public/styles/icons.scss";
+@import "/public/styles/reset.scss";
+@import "/public/styles/layout.scss";
+@import "/public/styles/typography.scss";
 
 /* Component styles
  * Future state: Refactor to use CSS Modules
 */
-@import "/styles/components/account-home.scss";
-@import "/styles/components/button.scss";
-@import "/styles/components/checkbox.scss";
-@import "/styles/components/create-post.scss";
-@import "/styles/components/flash.scss";
-@import "/styles/components/footer.scss";
-@import "/styles/components/form.scss";
-@import "/styles/components/g-recaptcha.scss";
-@import "/styles/components/header.scss";
-@import "/styles/components/hero.scss";
-@import "/styles/components/iconblock.scss";
-@import "/styles/components/image-block.scss";
-@import "/styles/components/loadingscreen.scss";
-@import "/styles/components/logo.scss";
-@import "/styles/components/photo.scss";
-@import "/styles/components/post.scss";
-@import "/styles/components/post-item.scss";
-@import "/styles/components/resume.scss";
-@import "/styles/components/section-block.scss";
+@import "/public/styles/components/account-home.scss";
+@import "/public/styles/components/button.scss";
+@import "/public/styles/components/checkbox.scss";
+@import "/public/styles/components/create-post.scss";
+@import "/public/styles/components/flash.scss";
+@import "/public/styles/components/footer.scss";
+@import "/public/styles/components/form.scss";
+@import "/public/styles/components/g-recaptcha.scss";
+@import "/public/styles/components/header.scss";
+@import "/public/styles/components/hero.scss";
+@import "/public/styles/components/iconblock.scss";
+@import "/public/styles/components/image-block.scss";
+@import "/public/styles/components/loadingscreen.scss";
+@import "/public/styles/components/logo.scss";
+@import "/public/styles/components/photo.scss";
+@import "/public/styles/components/post.scss";
+@import "/public/styles/components/post-item.scss";
+@import "/public/styles/components/resume.scss";
+@import "/public/styles/components/section-block.scss";
