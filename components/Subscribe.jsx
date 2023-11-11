@@ -1,24 +1,26 @@
 'use client'
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { handleSubmit } from "@/services/recaptcha";
+import StatusMessagePane from "@/layout/StatusMessagePane";
 
-function Subscribe() {
+const Subscribe = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [statusMessage, setStatusMessage] = useState();
+    const [statusMessage, setStatusMessage] = useState('');
     const [statusType, setStatusType] = useState('warning');
 
-    function resetForm() {
+    const resetForm = () => {
         setName('');
         setEmail('');
     }
 
-    function isValid() {
+    const isValid = () => {
         document.getElementById('contact-form').reportValidity();
         return document.getElementById('contact-form').checkValidity();
     }
 
-    function submit(token) {
+    const submitHandler = (token) => {
         const subscriber = { name, email_address: email };
 
         fetch('/api/v1/subscribers/', {
@@ -54,38 +56,14 @@ function Subscribe() {
         });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!isValid()) {
-            return;
-        }
-
-        grecaptcha.ready(function () {
-            grecaptcha
-                .execute(process.env.RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
-                .then(function (token) {
-                    submit(token);
-                });
-        });
-    };
-
-    const statusMessageEl = (
-        <>
-            <div className="flash-container">
-                <div className={'flash flash-' + statusType}>
-                    <p>{statusMessage}</p>
-                </div>
-            </div>
-            <br />
-            <br />
-        </>
-    );
-
     return (
         <>
-            {statusMessage != null && statusMessageEl}
+            <StatusMessagePane statusType={statusType}
+                           statusMessage={statusMessage} />
 
-            <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
+            <form id="contact-form"
+                  className="contact-form"
+                  onSubmit={(e)=>handleSubmit(e, isValid(), submitHandler)}>
                 <div className="container form-container">
                     <h2>Subscribe</h2>
                     <p>
@@ -117,13 +95,9 @@ function Subscribe() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <br />
-                <br />
-                <button
-                    className="g-recaptcha field submit-button"
-                    onClick={handleSubmit}>
-                    Subscribe Now!
-                </button>
+                <br /><br />
+
+                <button className="field submit-button">Subscribe Now!</button>
             </form>
         </>
     );

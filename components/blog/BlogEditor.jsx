@@ -1,8 +1,10 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { handleSubmit } from "@/services/recaptcha";
+import StatusMessagePane from "@/layout/StatusMessagePane";
 
-function BlogEditor() {
+const BlogEditor = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [description, setDescription] = useState('');
@@ -10,9 +12,9 @@ function BlogEditor() {
     const [category, setCategory] = useState('');
     const [tags, setTags] = useState('');
     const [slug, setSlug] = useState('');
-    const [userId, setUserId] = useState();
+    const [userId, setUserId] = useState('');
 
-    const [statusMessage, setStatusMessage] = useState();
+    const [statusMessage, setStatusMessage] = useState('');
     const [statusType, setStatusType] = useState('warning');
     const editorType = 'create';
 
@@ -20,25 +22,12 @@ function BlogEditor() {
         document.title = 'New Blog Post | Chris Centrella';
     });
 
-    // Load reCaptcha script functions
-    useEffect(() => {
-        const recaptchaScript = document.createElement('script');
-        recaptchaScript.src =
-            'https://www.google.com/recaptcha/api.js?render=' + process.env.RECAPTCHA_SITE_KEY_V3;
-        recaptchaScript.async = true;
-        document.body.appendChild(recaptchaScript);
-
-        return () => {
-            document.body.removeChild(recaptchaScript);
-        };
-    }, []);
-
-    function isValid() {
+    const isValid = () => {
         document.getElementById('contact-form').reportValidity();
         return document.getElementById('contact-form').checkValidity();
     }
 
-    function submit(token) {
+    const submitHandler = (token) => {
         const post = {
             title,
             content,
@@ -76,125 +65,98 @@ function BlogEditor() {
         });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!isValid()) {
-            return;
-        }
-
-        grecaptcha.ready(function () {
-            grecaptcha
-                .execute(process.env.RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
-                .then(function (token) {
-                    submit(token);
-                });
-        });
-    };
-
-    const statusMessageEl = (
-        <>
-            <div className="flash-container">
-                <div className={'flash flash-' + statusType}>
-                    <p>{statusMessage}</p>
-                </div>
-            </div>
-            <br />
-            <br />
-        </>
-    );
-
-    const form = (
-        <form className="create-post-form">
-            <div className="container">
-                <div className="button-fixed-container create-post-button-container">
-                    <button className="g-recaptcha button-fixed" onClick={handleSubmit}>
-                        Publish
-                    </button>
-                </div>
-                <textarea
-                    required
-                    placeholder="Title"
-                    className="create-post-title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}></textarea>
-                <br />
-
-                <textarea
-                    required
-                    placeholder="Start typing here..."
-                    className="create-post-content post-content"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}></textarea>
-                <br />
-            </div>
-            <div className="contact-form">
-                <div className="container form-container">
-                    <h2>Options</h2>
-                    <textarea
-                        placeholder="Description"
-                        className="field create-post-description'"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}></textarea>
-                    <br />
-
-                    <input
-                        type="url"
-                        placeholder="Featured Image (Not Yet Supported)"
-                        className="field"
-                        value={featuredImage}
-                        onChange={(e) => setFeaturedImage(e.target.value)}
-                    />
-                    <br />
-
-                    <input
-                        placeholder="Category"
-                        className="field"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    />
-                    <br />
-
-                    <input
-                        placeholder="Tags"
-                        className="field"
-                        value={tags}
-                        onChange={(e) => setTags(e.target.value)}
-                    />
-                    <br />
-
-                    <input
-                        placeholder="Slugs"
-                        className="field"
-                        value={slug}
-                        onChange={(e) => setSlug(e.target.value)}
-                    />
-                    <br />
-
-                    <select
-                        className="field"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}>
-                        <option>Select User</option>
-                    </select>
-                </div>
-            </div>
-            <div className="button-fixed-container top bottom thin">
-                <button className="g-recaptcha button-fixed" onSubmit={handleSubmit}>
-                    Publish
-                </button>
-                {editorType === 'edit' && (
-                    <button className="button-fixed red">Delete</button>
-                )}
-            </div>
-        </form>
-    );
-
     return (
         <>
-            {statusMessage != null && statusMessageEl}
-            {form}
+            <StatusMessagePane statusType={statusType}
+                           statusMessage={statusMessage}/>
+            <form className="create-post-form">
+                <div className="container">
+                    <div className="button-fixed-container create-post-button-container">
+                        <button className="button-fixed"
+                                onClick={(e)=>handleSubmit(e, isValid(), submitHandler)}>
+                            Publish
+                        </button>
+                    </div>
+                    <textarea
+                        required
+                        placeholder="Title"
+                        className="create-post-title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}></textarea>
+                    <br />
+
+                    <textarea
+                        required
+                        placeholder="Start typing here..."
+                        className="create-post-content post-content"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}></textarea>
+                    <br />
+                </div>
+                <div className="contact-form">
+                    <div className="container form-container">
+                        <h2>Options</h2>
+                        <textarea
+                            placeholder="Description"
+                            className="field create-post-description'"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}></textarea>
+                        <br />
+
+                        <input
+                            type="url"
+                            placeholder="Featured Image (Not Yet Supported)"
+                            className="field"
+                            value={featuredImage}
+                            onChange={(e) => setFeaturedImage(e.target.value)}
+                        />
+                        <br />
+
+                        <input
+                            placeholder="Category"
+                            className="field"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                        />
+                        <br />
+
+                        <input
+                            placeholder="Tags"
+                            className="field"
+                            value={tags}
+                            onChange={(e) => setTags(e.target.value)}
+                        />
+                        <br />
+
+                        <input
+                            placeholder="Slugs"
+                            className="field"
+                            value={slug}
+                            onChange={(e) => setSlug(e.target.value)}
+                        />
+                        <br />
+
+                        <select
+                            className="field"
+                            value={userId}
+                            onChange={(e) => setUserId(e.target.value)}>
+                            <option>Select User</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="button-fixed-container top bottom thin">
+                    <button className="button-fixed"
+                            onClick={(e)=>handleSubmit(e, isValid(), submitHandler)}>
+                        Publish
+                    </button>
+                    {editorType === 'edit' && (
+                        <button className="button-fixed red">Delete</button>
+                    )}
+                </div>
+            </form>
         </>
     );
+
 }
 
 export default BlogEditor;

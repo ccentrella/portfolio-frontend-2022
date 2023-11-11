@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const Page = () => {
   
@@ -22,7 +22,7 @@ const Page = () => {
     const outputBold = function () {
 
         const transformedUpperCase = input
-                                      .replaceAll('A', String.fromCodePoint(0x1D5D4 + 0x00))
+                                      .replaceAll('A', String.fromCodePoint(0x1D5D4))
                                       .replaceAll('B', String.fromCodePoint(0x1D5D4 + 0x01))
                                       .replaceAll('C', String.fromCodePoint(0x1D5D4 + 0x02))
                                       .replaceAll('D', String.fromCodePoint(0x1D5D4 + 0x03))
@@ -50,7 +50,7 @@ const Page = () => {
                                       .replaceAll('Z', String.fromCodePoint(0x1D5D4 + 0x19));
 
         const transformedLowerCase = transformedUpperCase
-                                      .replaceAll('a', String.fromCodePoint(0x1D5EE + 0x00))
+                                      .replaceAll('a', String.fromCodePoint(0x1D5EE))
                                       .replaceAll('b', String.fromCodePoint(0x1D5EE + 0x01))
                                       .replaceAll('c', String.fromCodePoint(0x1D5EE + 0x02))
                                       .replaceAll('d', String.fromCodePoint(0x1D5EE + 0x03))
@@ -78,7 +78,7 @@ const Page = () => {
                                       .replaceAll('z', String.fromCodePoint(0x1D5EE + 0x19));
 
         const transformedDigits = transformedLowerCase
-                                   .replaceAll('0', String.fromCodePoint(0x1D7EC + 0x00))
+                                   .replaceAll('0', String.fromCodePoint(0x1D7EC))
                                    .replaceAll('1', String.fromCodePoint(0x1D7EC + 0x01))
                                    .replaceAll('2', String.fromCodePoint(0x1D7EC + 0x02))
                                    .replaceAll('3', String.fromCodePoint(0x1D7EC + 0x03))
@@ -96,12 +96,12 @@ const Page = () => {
 
         // Check for warnings
         const digits = input.search("[0-9]")
-        digits != -1 && setErrorMessages(current=>
+        digits !== -1 && setErrorMessages(current =>
             [...current, "Due to unicode limitations, digits have not been italicized."]
         )   
 
         const transformedUpperCase = input
-                                      .replaceAll('A', String.fromCodePoint(0x1D608 + 0x00))
+                                      .replaceAll('A', String.fromCodePoint(0x1D608))
                                       .replaceAll('B', String.fromCodePoint(0x1D608 + 0x01))
                                       .replaceAll('C', String.fromCodePoint(0x1D608 + 0x02))
                                       .replaceAll('D', String.fromCodePoint(0x1D608 + 0x03))
@@ -129,7 +129,7 @@ const Page = () => {
                                       .replaceAll('Z', String.fromCodePoint(0x1D608 + 0x19));
         
         const transformedLowerCase = transformedUpperCase
-                                      .replaceAll('a', String.fromCodePoint(0x1D622 + 0x00))
+                                      .replaceAll('a', String.fromCodePoint(0x1D622))
                                       .replaceAll('b', String.fromCodePoint(0x1D622 + 0x01))
                                       .replaceAll('c', String.fromCodePoint(0x1D622 + 0x02))
                                       .replaceAll('d', String.fromCodePoint(0x1D622 + 0x03))
@@ -159,7 +159,7 @@ const Page = () => {
         // Transform to normal digits because italicized digits do not exist
         // Because style is slightly different, perform transform anyway
         const transformedDigits = transformedLowerCase
-                                   .replaceAll('0', String.fromCodePoint(0x1D7E2 + 0x00))
+                                   .replaceAll('0', String.fromCodePoint(0x1D7E2))
                                    .replaceAll('1', String.fromCodePoint(0x1D7E2 + 0x01))
                                    .replaceAll('2', String.fromCodePoint(0x1D7E2 + 0x02))
                                    .replaceAll('3', String.fromCodePoint(0x1D7E2 + 0x03))
@@ -177,12 +177,12 @@ const Page = () => {
 
         // Check for warnings
         const digits = input.search("[0-9]")
-        digits != -1 && setErrorMessages(current=>
+        digits !== -1 && setErrorMessages(current =>
             [...current, "Due to unicode limitations, digits have not been italicized."]
         )   
 
         const transformedUpperCase = input
-                                      .replaceAll('A', String.fromCodePoint(0x1D63C + 0x00))
+                                      .replaceAll('A', String.fromCodePoint(0x1D63C))
                                       .replaceAll('B', String.fromCodePoint(0x1D63C + 0x01))
                                       .replaceAll('C', String.fromCodePoint(0x1D63C + 0x02))
                                       .replaceAll('D', String.fromCodePoint(0x1D63C + 0x03))
@@ -210,7 +210,7 @@ const Page = () => {
                                       .replaceAll('Z', String.fromCodePoint(0x1D63C + 0x19));
         
         const transformedLowerCase = transformedUpperCase
-                                      .replaceAll('a', String.fromCodePoint(0x1D656 + 0x00))
+                                      .replaceAll('a', String.fromCodePoint(0x1D656))
                                       .replaceAll('b', String.fromCodePoint(0x1D656 + 0x01))
                                       .replaceAll('c', String.fromCodePoint(0x1D656 + 0x02))
                                       .replaceAll('d', String.fromCodePoint(0x1D656 + 0x03))
@@ -239,7 +239,7 @@ const Page = () => {
 
         // Use bold digits because bold italicized digits do not exist                              
         const transformedDigits = transformedLowerCase
-                                   .replaceAll('0', String.fromCodePoint(0x1D7EC + 0x00))
+                                   .replaceAll('0', String.fromCodePoint(0x1D7EC))
                                    .replaceAll('1', String.fromCodePoint(0x1D7EC + 0x01))
                                    .replaceAll('2', String.fromCodePoint(0x1D7EC + 0x02))
                                    .replaceAll('3', String.fromCodePoint(0x1D7EC + 0x03))
@@ -257,7 +257,7 @@ const Page = () => {
     const outputBoldSerif = function () {
 
         const transformedUpperCase = input
-                                      .replaceAll('A', String.fromCodePoint(0x1D400 + 0x00))
+                                      .replaceAll('A', String.fromCodePoint(0x1D400))
                                       .replaceAll('B', String.fromCodePoint(0x1D400 + 0x01))
                                       .replaceAll('C', String.fromCodePoint(0x1D400 + 0x02))
                                       .replaceAll('D', String.fromCodePoint(0x1D400 + 0x03))
@@ -285,7 +285,7 @@ const Page = () => {
                                       .replaceAll('Z', String.fromCodePoint(0x1D400 + 0x19));
 
         const transformedLowerCase = transformedUpperCase
-                                      .replaceAll('a', String.fromCodePoint(0x1D41A + 0x00))
+                                      .replaceAll('a', String.fromCodePoint(0x1D41A))
                                       .replaceAll('b', String.fromCodePoint(0x1D41A + 0x01))
                                       .replaceAll('c', String.fromCodePoint(0x1D41A + 0x02))
                                       .replaceAll('d', String.fromCodePoint(0x1D41A + 0x03))
@@ -313,7 +313,7 @@ const Page = () => {
                                       .replaceAll('z', String.fromCodePoint(0x1D41A + 0x19));
 
         const transformedDigits = transformedLowerCase
-                                   .replaceAll('0', String.fromCodePoint(0x1D7CE + 0x00))
+                                   .replaceAll('0', String.fromCodePoint(0x1D7CE))
                                    .replaceAll('1', String.fromCodePoint(0x1D7CE + 0x01))
                                    .replaceAll('2', String.fromCodePoint(0x1D7CE + 0x02))
                                    .replaceAll('3', String.fromCodePoint(0x1D7CE + 0x03))
@@ -331,7 +331,7 @@ const Page = () => {
 
         // Check for warnings
         const digits = input.search("[0-9]")
-        digits != -1 && setErrorMessages(current=>
+        digits !== -1 && setErrorMessages(current=>
             [...current, "Due to unicode limitations, digits have not been italicized and are not using serifs."]
         )
 
@@ -342,7 +342,7 @@ const Page = () => {
         }
 
         const transformedUpperCase = input
-                                      .replaceAll('A', String.fromCodePoint(0x1D434 + 0x00))
+                                      .replaceAll('A', String.fromCodePoint(0x1D434))
                                       .replaceAll('B', String.fromCodePoint(0x1D434 + 0x01))
                                       .replaceAll('C', String.fromCodePoint(0x1D434 + 0x02))
                                       .replaceAll('D', String.fromCodePoint(0x1D434 + 0x03))
@@ -370,7 +370,7 @@ const Page = () => {
                                       .replaceAll('Z', String.fromCodePoint(0x1D434 + 0x19));
         
         const transformedLowerCase = transformedUpperCase
-                                      .replaceAll('a', String.fromCodePoint(0x1D44E + 0x00))
+                                      .replaceAll('a', String.fromCodePoint(0x1D44E))
                                       .replaceAll('b', String.fromCodePoint(0x1D44E + 0x01))
                                       .replaceAll('c', String.fromCodePoint(0x1D44E + 0x02))
                                       .replaceAll('d', String.fromCodePoint(0x1D44E + 0x03))
@@ -400,7 +400,7 @@ const Page = () => {
         // Transform to normal digits because italicized digits do not exist
         // Because style is slightly different, perform transform anyway
         const transformedDigits = transformedLowerCase
-                                   .replaceAll('0', String.fromCodePoint(0x1D7E2 + 0x00))
+                                   .replaceAll('0', String.fromCodePoint(0x1D7E2))
                                    .replaceAll('1', String.fromCodePoint(0x1D7E2 + 0x01))
                                    .replaceAll('2', String.fromCodePoint(0x1D7E2 + 0x02))
                                    .replaceAll('3', String.fromCodePoint(0x1D7E2 + 0x03))
@@ -418,12 +418,12 @@ const Page = () => {
 
         // Check for warnings
         const digits = input.search("[0-9]")
-        digits != -1 && setErrorMessages(current=>
+        digits !== -1 && setErrorMessages(current=>
             [...current, "Due to unicode limitations, digits have not been italicized."]
         )        
         
         const transformedUpperCase = input
-                                      .replaceAll('A', String.fromCodePoint(0x1D468 + 0x00))
+                                      .replaceAll('A', String.fromCodePoint(0x1D468))
                                       .replaceAll('B', String.fromCodePoint(0x1D468 + 0x01))
                                       .replaceAll('C', String.fromCodePoint(0x1D468 + 0x02))
                                       .replaceAll('D', String.fromCodePoint(0x1D468 + 0x03))
@@ -451,7 +451,7 @@ const Page = () => {
                                       .replaceAll('Z', String.fromCodePoint(0x1D468 + 0x19));
         
         const transformedLowerCase = transformedUpperCase
-                                      .replaceAll('a', String.fromCodePoint(0x1D482 + 0x00))
+                                      .replaceAll('a', String.fromCodePoint(0x1D482))
                                       .replaceAll('b', String.fromCodePoint(0x1D482 + 0x01))
                                       .replaceAll('c', String.fromCodePoint(0x1D482 + 0x02))
                                       .replaceAll('d', String.fromCodePoint(0x1D482 + 0x03))
@@ -480,7 +480,7 @@ const Page = () => {
 
         // Use bold digits because bold italicized digits do not exist                              
         const transformedDigits = transformedLowerCase
-                                   .replaceAll('0', String.fromCodePoint(0x1D7CE + 0x00))
+                                   .replaceAll('0', String.fromCodePoint(0x1D7CE))
                                    .replaceAll('1', String.fromCodePoint(0x1D7CE + 0x01))
                                    .replaceAll('2', String.fromCodePoint(0x1D7CE + 0x02))
                                    .replaceAll('3', String.fromCodePoint(0x1D7CE + 0x03))
@@ -522,7 +522,7 @@ const Page = () => {
         }
     }
 
-    const outputPane=(
+    const outputPane = (
         <div>
             <h2>Output</h2>
             {output}
@@ -550,21 +550,21 @@ const Page = () => {
                         <input id="boldSwitch" type='checkbox' onChange={(e)=>setIsBold(e.target.checked)} />
                         <span className='slider round'/>
                     </label>
-                    <label for="boldSwitch" className='switch-label'><strong>Bold</strong></label>
+                    <label htmlFor="boldSwitch" className='switch-label'><strong>Bold</strong></label>
                 </p>
                 <p>
                     <label className="switch">
                         <input id="italicSwitch" type='checkbox' onChange={(e)=>setIsItalic(e.target.checked)} />
                         <span className='slider round' />
                     </label>
-                    <label for="italicSwitch" className='switch-label'><em>Italic</em></label>
+                    <label htmlFor="italicSwitch" className='switch-label'><em>Italic</em></label>
                 </p>
                 <p>
                     <label className="switch">
                         <input id="serifSwitch" type='checkbox' onChange={(e)=>setIsSerif(e.target.checked)} />
                         <span className='slider round' />
                     </label>
-                    <label for="serifSwitch" className='switch-label' style={{fontFamily: 'serif'}}>Use Serifs</label>
+                    <label htmlFor="serifSwitch" className='switch-label' style={{fontFamily: 'serif'}}>Use Serifs</label>
                 </p>
 
                 <button

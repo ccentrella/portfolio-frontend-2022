@@ -9,7 +9,7 @@ const RootLayout = ({ children }) => {
 
     const recaptchaScript = (
         <Script async src={'https://www.google.com/recaptcha/api.js?render=' +
-            process.env.RECAPTCHA_SITE_KEY_V3}></Script>
+            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V3}></Script>
     )
 
     return (

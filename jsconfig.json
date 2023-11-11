@@ -3,6 +3,7 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["components/*"],
+      "@/services/*": ["services/*"],
       "@/layout/*": ["components/layout/*"],
       "@/icons/*": ["public/icons/*"]
     }

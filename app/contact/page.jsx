@@ -1,12 +1,14 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { handleSubmit } from "@/services/recaptcha";
+import StatusMessagePane from "@/layout/StatusMessagePane";
 
-function Page() {
+const Page = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [statusMessage, setStatusMessage] = useState();
+    const [statusMessage, setStatusMessage] = useState('');
     const [statusType, setStatusType] = useState('warning');
 
     useEffect(() => {
@@ -16,18 +18,18 @@ function Page() {
         }
     }, []);
 
-    function resetForm() {
+    const resetForm = () => {
         setName('');
         setEmail('');
         setMessage('');
     }
 
-    function isValid() {
+    const isValid = () => {
         document.getElementById('contact-form').reportValidity();
         return document.getElementById('contact-form').checkValidity();
     }
 
-    function submit(token) {
+    const submitHandler = (token) => {
         const contact = { name, email, message };
 
         fetch('/api/v1/contact/', {
@@ -57,33 +59,6 @@ function Page() {
         });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!isValid()) {
-            return;
-        }
-
-        grecaptcha.ready(function () {
-            grecaptcha
-                .execute(process.env.RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
-                .then(function (token) {
-                    submit(token);
-                });
-        });
-    };
-
-    const statusMessageEl = (
-        <>
-            <div className="flash-container">
-                <div className={'flash flash-' + statusType}>
-                    <p>{statusMessage}</p>
-                </div>
-            </div>
-            <br />
-            <br />
-        </>
-    );
-
     return (
         <>
             <p className="section-title thin">Contact Me</p>
@@ -92,12 +67,18 @@ function Page() {
                     Thank you for visiting my website. You can reach out to me via the
                     form below.
                 </p>
-                <p>If you prefer, you can message me on <a className='emphasis' target='_blank' href="https://linkedin.com/in/ccentrella">LinkedIn</a>.</p>
+                <p>If you prefer, you can message me on&nbsp;
+                    <a className='emphasis'
+                       target='_blank'
+                       href="https://linkedin.com/in/ccentrella">LinkedIn</a>.</p>
             </div>
 
-            {statusMessage != null && statusMessageEl}
+            <StatusMessagePane statusType={statusType}
+                           statusMessage={statusMessage}/>
 
-            <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
+            <form id="contact-form"
+                  className="contact-form"
+                  onSubmit={(e) => handleSubmit(e, isValid, submitHandler)}>
                 <input
                     type="text"
                     placeholder="Name"
@@ -127,11 +108,7 @@ function Page() {
                 />
                 <br />
 
-                <button
-                    className="g-recaptcha field submit-button"
-                    onClick={handleSubmit}>
-                    Send Message
-                </button>
+                <button className="field submit-button">Send Message</button>
             </form>
         </>
     );
