@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from 'react'
 
-function Page() {
+const Page = () => {
   
     useEffect(() => {
         document.title = "Generate Bold and Italic Characters | Chris Centrella";
+        return () => {
+            document.title = '';
+        }
     }, []);
 
     const [input, setInput] = useState('');

@@ -1,10 +1,6 @@
 import Link from "next/link";
 
-export const metadata = {
-    title: "Page Not Found"
-}
-
-export default function NotFound() {
+const NotFound = () => {
     return (
         <main>
             <div className="container">
@@ -25,3 +21,9 @@ export default function NotFound() {
         </main>
     );
 }
+
+export const metadata = {
+    title: "Page Not Found"
+}
+
+export default NotFound;

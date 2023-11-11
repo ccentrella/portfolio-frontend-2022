@@ -11,6 +11,9 @@ function Page() {
 
     useEffect(() => {
         document.title = 'Get In Touch | Chris Centrella';
+        return () => {
+            document.title = '';
+        }
     }, []);
 
     function resetForm() {

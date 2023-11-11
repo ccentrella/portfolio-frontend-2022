@@ -6,12 +6,15 @@ import { useState, useEffect } from 'react';
 import Subscribe from '@/components/Subscribe';
 import BlogEntry from '@/components/blog/BlogEntry';
 
-function Page() {
+const Page = () => {
     const [loaded, setLoaded] = useState(false);
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         document.title = "Welcome | Chris's Blog";
+        return () => {
+            document.title = '';
+        }
     }, []);
 
     useEffect(() => {

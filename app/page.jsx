@@ -1,17 +1,10 @@
-'use client'
-
-import React, { useEffect } from "react";
-
 import Hero from "@/components/Hero";
 import Highlights from "./highlights/page";
 import Specialties from "./specialties/page";
 import Interests from "./interests/page";
 import WorkExperienceLinkBlock from "@/components/blocks/link-blocks/WorkExperienceLinkBlock";
 
-function Page() {
-    useEffect(() => {
-        document.title = "Welcome to Chris Centrella's Portfolio";
-    }, []);
+const Page = () => {
 
     return (
         <article className="home">
