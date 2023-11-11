@@ -6,7 +6,7 @@ function ThesisLinkBlock() {
 
     const links = [{
         linkDescription: "Read Now",
-        linkPath: "/images/thesis.pdf",
+        linkPath: "/resources/thesis.pdf",
         isExternal: true
     }];
 
