@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import { handleSubmit } from "@/services/recaptcha";
+import { submitContactForm } from "@/services/contact";
 import StatusMessagePane from "@/layout/StatusMessagePane";
 
 const Page = () => {
@@ -24,39 +24,29 @@ const Page = () => {
         setMessage('');
     }
 
-    const isValid = () => {
-        document.getElementById('contact-form').reportValidity();
-        return document.getElementById('contact-form').checkValidity();
-    }
+    const submitHandler = async (e) => {
 
-    const submitHandler = (token) => {
-        const contact = { name, email, message };
+        e.preventDefault();
 
-        fetch('/api/v1/contact/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contact, 'g-recaptcha-response': token }),
-        }).then((response) => {
-            switch (response['status']) {
-                case 200:
-                    resetForm();
-                    setStatusMessage('The message was sent successfully!');
-                    setStatusType('success');
-                    break;
-                case 400:
-                    setStatusMessage(
-                        'Verification failed. Please ensure all fields are properly filled in, and try again.'
-                    );
-                    setStatusType('warning');
-                    break;
-                default:
-                    setStatusMessage(
-                        "That's not you; it's us. A system error prevented us from successfully sending your message."
-                    );
-                    setStatusType('error');
-                    break;
-            }
-        });
+        const response = await submitContactForm({ name, email, message });
+        switch (response['status']) {
+            case 200:
+                resetForm();
+                setStatusMessage('The message was sent successfully!');
+                setStatusType('success');
+                break;
+            case 400:
+                setStatusMessage(
+                    'Verification failed. Please ensure all fields are properly filled in, and try again.'
+                );
+                setStatusType('warning');
+                break;
+            default:
+                setStatusMessage(
+                    "That's not you; it's us. A system error prevented us from successfully sending your message."
+                );
+                setStatusType('error');
+        }
     }
 
     return (
@@ -78,7 +68,7 @@ const Page = () => {
 
             <form id="contact-form"
                   className="contact-form"
-                  onSubmit={(e) => handleSubmit(e, isValid, submitHandler)}>
+                  onSubmit={(e) => submitHandler(e)}>
                 <input
                     type="text"
                     placeholder="Name"

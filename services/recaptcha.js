@@ -1,13 +1,10 @@
-export const handleSubmit = (e, isValid, submit) => {
-    e.preventDefault();
+export const validateRecaptcha = () => {
 
-    if (!isValid()) {
-        return;
-    }
+    const callRecaptcha = () => new Promise((resolve) =>
+        grecaptcha.ready(resolve));
 
-    grecaptcha.ready(() => {
-        grecaptcha
-            .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V3, { action: 'submit' })
-            .then((token) => submit(token))
-    });
-};
+    return callRecaptcha()
+        .then(() => grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V3,
+            { action: 'submit' })
+        );
+}

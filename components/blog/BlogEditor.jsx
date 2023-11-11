@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import { handleSubmit } from "@/services/recaptcha";
+import {useEffect, useState} from 'react';
+import {createPost} from "@/services/blog";
 import StatusMessagePane from "@/layout/StatusMessagePane";
 
 const BlogEditor = () => {
@@ -22,12 +22,10 @@ const BlogEditor = () => {
         document.title = 'New Blog Post | Chris Centrella';
     });
 
-    const isValid = () => {
-        document.getElementById('contact-form').reportValidity();
-        return document.getElementById('contact-form').checkValidity();
-    }
+    const submitHandler = async (e) => {
 
-    const submitHandler = (token) => {
+        e.preventDefault();
+
         const post = {
             title,
             content,
@@ -39,41 +37,36 @@ const BlogEditor = () => {
             user_id: userId,
         };
 
-        fetch('/api/v1/blog/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ post, 'g-recaptcha-response': token }),
-        }).then((response) => {
-            switch (response['status']) {
-                case 200:
-                    setStatusMessage('Post created successfully!');
-                    setStatusType('success');
-                    break;
-                case 400:
-                    setStatusMessage(
-                        'Verification failed. Please ensure all fields are properly filled in, and try again.'
-                    );
-                    setStatusType('warning');
-                    break;
-                default:
-                    setStatusMessage(
-                        "That's not you; it's us. A system error prevented us from completing your subscription request."
-                    );
-                    setStatusType('error');
-                    break;
-            }
-        });
+        const response = await createPost(post);
+        switch (response['status']) {
+            case 200:
+                setStatusMessage('Post created successfully!');
+                setStatusType('success');
+                break;
+            case 400:
+                setStatusMessage(
+                    'Verification failed. Please ensure all fields are properly filled in, and try again.'
+                );
+                setStatusType('warning');
+                break;
+            default:
+                setStatusMessage(
+                    "That's not you; it's us. A system error prevented us from completing your subscription request."
+                );
+                setStatusType('error');
+                break;
+        }
     }
 
     return (
         <>
             <StatusMessagePane statusType={statusType}
-                           statusMessage={statusMessage}/>
+                               statusMessage={statusMessage}/>
             <form className="create-post-form">
                 <div className="container">
                     <div className="button-fixed-container create-post-button-container">
                         <button className="button-fixed"
-                                onClick={(e)=>handleSubmit(e, isValid(), submitHandler)}>
+                                onClick={(e) => submitHandler(e)}>
                             Publish
                         </button>
                     </div>
@@ -83,7 +76,7 @@ const BlogEditor = () => {
                         className="create-post-title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}></textarea>
-                    <br />
+                    <br/>
 
                     <textarea
                         required
@@ -91,7 +84,7 @@ const BlogEditor = () => {
                         className="create-post-content post-content"
                         value={content}
                         onChange={(e) => setContent(e.target.value)}></textarea>
-                    <br />
+                    <br/>
                 </div>
                 <div className="contact-form">
                     <div className="container form-container">
@@ -101,7 +94,7 @@ const BlogEditor = () => {
                             className="field create-post-description'"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}></textarea>
-                        <br />
+                        <br/>
 
                         <input
                             type="url"
@@ -110,7 +103,7 @@ const BlogEditor = () => {
                             value={featuredImage}
                             onChange={(e) => setFeaturedImage(e.target.value)}
                         />
-                        <br />
+                        <br/>
 
                         <input
                             placeholder="Category"
@@ -118,7 +111,7 @@ const BlogEditor = () => {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                         />
-                        <br />
+                        <br/>
 
                         <input
                             placeholder="Tags"
@@ -126,7 +119,7 @@ const BlogEditor = () => {
                             value={tags}
                             onChange={(e) => setTags(e.target.value)}
                         />
-                        <br />
+                        <br/>
 
                         <input
                             placeholder="Slugs"
@@ -134,7 +127,7 @@ const BlogEditor = () => {
                             value={slug}
                             onChange={(e) => setSlug(e.target.value)}
                         />
-                        <br />
+                        <br/>
 
                         <select
                             className="field"
@@ -146,7 +139,7 @@ const BlogEditor = () => {
                 </div>
                 <div className="button-fixed-container top bottom thin">
                     <button className="button-fixed"
-                            onClick={(e)=>handleSubmit(e, isValid(), submitHandler)}>
+                            onClick={(e) => submitHandler(e)}>
                         Publish
                     </button>
                     {editorType === 'edit' && (
