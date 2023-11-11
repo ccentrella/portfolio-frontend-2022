@@ -1,7 +1,4 @@
 import './global.scss';
-// import '/styles/typography.scss'
-
-import React from 'react';
 
 import Header from '@/layout/Header';
 import Footer from '@/layout/Footer';
@@ -9,26 +6,35 @@ import AppLoading from '@/layout/AppLoading';
 import Script from "next/script";
 
 const metaConfiguration = {
-    url: 'https://chriscentrella.com',
+    url: process.env.ROOT_URL,
+    siteName: 'ccentrella-portfolio',
     title: 'Welcome to Chris\'s Portfolio',
     description: '10 years of coding experience, with extensive knowledge of ' +
     'frontend and backend. Exceptional debugging and problem solving using Root Cause Analysis (RCA).',
-    image: 'https://chriscentrella.com/images/thumbnail.png'
+    image: `/images/thumbnail.png`
 }
 export const metadata = {
-    author: 'Chris Centrella',
+    metadataBase: new URL(process.env.ROOT_URL),
+    referrer: 'origin-when-cross-origin',
+    author: { name: 'Chris Centrella', url: 'https://linkedin.com/in/ccentrella' },
+    creator: 'Chris Centrella',
+    publisher: 'Chris Centrella',
+    applicationName: metaConfiguration.siteName,
+    keywords: ['chris centrella', 'software engineer', 'designer', 'photography'],
     title: metaConfiguration.title,
     description: metaConfiguration.description,
     openGraph: {
-        url: metaConfiguration.url,
         type: 'website',
+        locale: 'en_US',
+        url: metaConfiguration.url,
+        siteName: metaConfiguration.siteName,
         title: metaConfiguration.title,
         description: metaConfiguration.description,
         image: metaConfiguration.image
     },
     twitter: {
         card: 'summary_large_image',
-        domain: 'chriscentrella.com',
+        domain: process.env.DOMAIN,
         url: metaConfiguration.url,
         title: metaConfiguration.title,
         description: metaConfiguration.description,
