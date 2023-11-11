@@ -9,3 +9,9 @@ export const createPost = async (post) => {
         body: JSON.stringify({ post, 'g-recaptcha-response': token }),
     });
 }
+
+export const getPosts = () => {
+
+    return fetch('/api/v1/blog/')
+        .then((response) => response.json());
+}

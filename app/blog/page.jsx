@@ -3,26 +3,21 @@
 import { useState, useEffect } from 'react';
 import Subscribe from '@/components/Subscribe';
 import BlogEntry from '@/components/blog/BlogEntry';
+import {getPosts} from "@/services/blog";
+import StatusMessagePane from "@/layout/StatusMessagePane";
 
 const Page = () => {
-    const [loaded, setLoaded] = useState(false);
     const [posts, setPosts] = useState([]);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
-        document.title = "Welcome | Chris's Blog";
-        return () => {
-            document.title = '';
-        }
-    }, []);
-
-    useEffect(() => {
-        fetch('/api/v1/blog/')
-            .then((response) => response.json())
+        getPosts()
             .then((posts) => {
                 setPosts(posts);
-                setLoaded(true);
-            });
-    }, [loaded]);
+            })
+            .catch(() => setError(true))
+        ;
+    }, []);
 
     return (
         <>
@@ -45,6 +40,8 @@ const Page = () => {
                         everyone will experience the glory of God, alive in the Church!
                     </p>
                 </div>
+                {error && <StatusMessagePane statusType='warning'
+                                             statusMessage='An error occurred. Posts may not have loaded correctly.' />}
                 {Array.isArray(posts) &&
                     posts.map((post) => <BlogEntry post={post} key={post.slug} />)}
             </main>
