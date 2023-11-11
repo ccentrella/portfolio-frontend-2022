@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import StatusMessagePane from "@/layout/StatusMessagePane";
 
 function Unsubscribe() {
-    const [statusMessage, setStatusMessage] = useState();
+    const [statusMessage, setStatusMessage] = useState('');
     const [statusType, setStatusType] = useState('warning');
     const [accountExists, setAccountExists] = useState(true);
     const { id } = useParams();
@@ -52,20 +53,9 @@ function Unsubscribe() {
                             'from completing your unsubscription request.'
                     );
                     setStatusType('error');
-                    break;
             }
         });
     }
-
-    const statusMessageEl = (
-        <>
-            <div className="flash-container">
-                <div className={'flash flash-' + statusType}>
-                    <p>{statusMessage}</p>
-                </div>
-            </div>
-        </>
-    );
 
     const unsubscribeEl = (
         <div className="contact-form">
@@ -101,7 +91,8 @@ function Unsubscribe() {
 
     return (
         <>
-            {statusMessage != null && statusMessageEl}
+            <StatusMessagePane statusType={statusType}
+                               statusMessage={statusMessage} />
 
             <div className="container">
                 <h1>Unsubscribe</h1>
