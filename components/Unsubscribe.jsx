@@ -27,7 +27,7 @@ function Unsubscribe() {
                 setStatusType('warning');
             }
         });
-    }, []);
+    }, [id]);
 
     function submit() {
         fetch('/api/v1/subscribers/' + id, {
@@ -85,7 +85,7 @@ function Unsubscribe() {
                 </button>
 
                 <Link href="/blog" className="button-fixed submit-button highlight">
-                    No, please don't!
+                    No, please don&apos;t!
                 </Link>
             </div>
         </div>

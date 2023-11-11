@@ -21,7 +21,7 @@ function BlogReader() {
                 document.title = post.title + ' | Chris Centrella';
                 setLoaded(true);
             });
-    }, [loaded]);
+    }, [loaded, params.slug]);
 
     if (!loaded) {
         return (
@@ -36,7 +36,7 @@ function BlogReader() {
         document.title = "Page Doesn't Exist | Chris Centrella";
         return (
             <div className="container">
-                <h1>This post doesn't exist or has been removed.</h1>
+                <h1>This post doesn&apos;t exist or has been removed.</h1>
                 <div className="button-fixed-container thin">
                     <Link className="button-fixed" href="/">
                         View Homepage

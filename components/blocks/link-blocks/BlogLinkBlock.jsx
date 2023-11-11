@@ -15,7 +15,7 @@ function BlogLinkBlock() {
                     setLatestPost({...latestPost, title: post.title, link: "/blog/" + post.slug});
                 },
             );
-    }, [latestPost.value]);
+    }, [latestPost]);
 
     const links = [
         {
