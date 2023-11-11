@@ -1,22 +1,20 @@
-'use client'
+import Link from "next/link";
 
-import React, { useEffect } from 'react';
+export const metadata = {
+    title: "Page Not Found"
+}
 
-function NotFound() {
-    useEffect(() => {
-        document.title = 'Page Not Found | Chris Centrella';
-    }, []);
-
+export default function NotFound() {
     return (
         <main>
-            <div class="container">
+            <div className="container">
                 <h1>Page Not Found</h1>
-                <p class="large">
-                    Oops! It looks like this page doesn't exist. Have a look at my blog or
+                <p className="large">
+                    Oops! It looks like this page doesn&lsquo;t exist. Have a look at my blog or
                     visit my homepage!
                 </p>
             </div>
-            <div class="button-fixed-container-dark">
+            <div className="button-fixed-container-dark">
                 <Link href="/blog" className="button-fixed">
                     View Blog
                 </Link>
@@ -27,5 +25,3 @@ function NotFound() {
         </main>
     );
 }
-
-export default NotFound;
