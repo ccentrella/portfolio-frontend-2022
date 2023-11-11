@@ -21,7 +21,10 @@ export const metadata = {
     publisher: 'Chris Centrella',
     applicationName: metaConfiguration.siteName,
     keywords: ['chris centrella', 'software engineer', 'designer', 'photography'],
-    title: metaConfiguration.title,
+    title: {
+        template: '%s' | 'Chris Centrella',
+        absolute: metaConfiguration.title
+    },
     description: metaConfiguration.description,
     openGraph: {
         type: 'website',
