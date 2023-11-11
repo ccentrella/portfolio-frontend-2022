@@ -1,5 +1,12 @@
+import Subscribe from "@/components/Subscribe";
+
 const Layout = ({ children }) => {
-    return children;
+    return (
+        <>
+            {children}
+            <Subscribe />
+        </>
+    )
 }
 const metaConfiguration = {
     url: `${process.env.ROOT_URL}/blog`,

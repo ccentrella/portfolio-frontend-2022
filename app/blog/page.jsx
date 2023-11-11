@@ -45,7 +45,6 @@ const Page = () => {
                 {Array.isArray(posts) &&
                     posts.map((post) => <BlogEntry post={post} key={post.slug} />)}
             </main>
-            <Subscribe />
         </>
     );
 }
