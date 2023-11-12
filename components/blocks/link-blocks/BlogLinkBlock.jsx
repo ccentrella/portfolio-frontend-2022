@@ -1,21 +1,18 @@
-'use client'
-
 import React, {useEffect, useState} from "react";
 import LinkBlock from "./LinkBlock";
 import BlogIcon from "@/icons/article.svg";
+import {getLatestPost} from "@/services/blog";
 
 function BlogLinkBlock() {
-    const [latestPost, setLatestPost] = useState({value: 0, title: "", link: ""});
+    const [latestPost, setLatestPost] = useState({title: "", link: ""});
 
     useEffect(() => {
-        fetch("/api/v1/blog/latest_article")
-            .then((response) => response.json())
-            .then(
-                (post) => {
-                    setLatestPost({...latestPost, title: post.title, link: "/blog/" + post.slug});
-                },
-            );
-    }, [latestPost]);
+
+        getLatestPost()
+            .then((post) => setLatestPost({title: post.title, link: "/blog/" + post.slug}))
+            .catch(() => setLatestPost({title: 'Failed to Load', link: '/blog'}))
+
+    }, []);
 
     const links = [
         {

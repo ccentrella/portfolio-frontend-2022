@@ -15,3 +15,9 @@ export const getPosts = () => {
     return fetch('/api/v1/blog/')
         .then((response) => response.json());
 }
+
+export const getLatestPost = () => {
+
+    return fetch("/api/v1/blog/latest_article")
+        .then((response) => response.json());
+}
