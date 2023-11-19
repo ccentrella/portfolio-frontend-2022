@@ -7,14 +7,14 @@ import StatusMessagePane from "@/layout/StatusMessagePane";
 
 const Page = () => {
     const [posts, setPosts] = useState([]);
-    const [error, setError] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         getPosts()
             .then((posts) => {
                 setPosts(posts);
             })
-            .catch(() => setError(true))
+            .catch(() => setIsError(true))
         ;
     }, []);
 
@@ -39,7 +39,7 @@ const Page = () => {
                         everyone will experience the glory of God, alive in the Church!
                     </p>
                 </div>
-                {error && <StatusMessagePane statusType='warning'
+                {isError && <StatusMessagePane statusType='warning'
                                              statusMessage='An error occurred. Posts may not have loaded correctly.' />}
                 {Array.isArray(posts) &&
                     posts.map((post) => <BlogEntry post={post} key={post.slug} />)}
