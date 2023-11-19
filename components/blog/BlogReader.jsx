@@ -2,25 +2,25 @@
 
 import LoadingScreen from '@/layout/LoadingScreen';
 import React, { useEffect, useState } from 'react';
+import parse from 'html-react-parser';
 import Link from 'next/link'
 import { useParams } from 'next/navigation';
-import Subscribe from '../Subscribe';
+import {getPost} from "@/services/blog";
+import StatusMessagePane from "@/layout/StatusMessagePane";
 
 function BlogReader() {
     const [loaded, setLoaded] = useState(false);
+    const [isError, setIsError] = useState(false);
     const [post, setPost] = useState();
     const params = useParams();
-    const parse = require('html-react-parser');
 
     useEffect(() => {
-        fetch('/api/v1/blog/' + params.slug)
-            .then((response) => response.json())
+        getPost(params.slug)
             .then((post) => {
-                console.log(post);
-                setPost(post);
-                document.title = post.title + ' | Chris Centrella';
-                setLoaded(true);
-            });
+                setPost(post)
+                setLoaded(true)
+            })
+            .catch(() => setIsError(true))
     }, [loaded, params.slug]);
 
     if (!loaded) {
@@ -83,11 +83,13 @@ function BlogReader() {
                         <p className="post-description">{post.description}</p>
                     </div>
                 </section>
+                {isError && <StatusMessagePane statusType='warning'
+                                             statusMessage='An error occurred. Post may not have loaded correctly.' />}
                 <section className="post-content container">
-                    {post.content.body && parse(post.content.body)}
+                    {console.log(post.content)}
+                    {post.content && parse(post.content)}
                 </section>
             </article>
-            <Subscribe />
         </>
     );
 }
