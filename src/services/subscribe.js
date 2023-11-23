@@ -1,4 +1,5 @@
 import { validateRecaptcha} from "@/services/recaptcha";
+import config from "@/config";
 
 export const subscribe = async (subscriber) => {
 
